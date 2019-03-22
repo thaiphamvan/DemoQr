@@ -35,6 +35,7 @@ export default class App extends Component<Props> {
   _renderModal() {
     return (
       <Modal
+        onRequestClose
         visible={this.state.visible}>
         <View style={styles.styleModal1}>
           <View style={styles.styleModal2}>
@@ -45,11 +46,13 @@ export default class App extends Component<Props> {
                 value={this.state.text}
                 placeholder={'QR CODE'}
               />
-              <QRCode
-                value={this.state.text}
-                size={200}
-                bgColor='purple'
-                fgColor='white' />
+              <View style={{ overflow: 'hidden' }}>
+                <QRCode
+                  value={this.state.text}
+                  size={200}
+                  bgColor='purple'
+                  fgColor='white' />
+              </View>
               <TouchableOpacity
                 style={styles.styleButton}
                 onPress={() => { this.setState({ visible: false }) }}
